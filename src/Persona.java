@@ -3,5 +3,5 @@ public class Persona {
     private String apellido;
     private int id;
     private String phoneNumber;
-    
+
 }
