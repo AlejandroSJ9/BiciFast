@@ -2,14 +2,16 @@ public class Bicicleta {
     private String marca;
     private int unique_id;
     private String color;
+    private boolean robada;
     private Persona persona;
 
 
-    public Bicicleta(String marca, int unique_id, String color, Persona persona) {
+    public Bicicleta(String marca, int unique_id, String color, Persona persona, boolean robada) {
         this.marca = marca;
         this.unique_id = unique_id;
         this.color = color;
         this.persona = persona;
+        this.robada = robada;
     }
 
     public String getMarca() {
@@ -36,6 +38,14 @@ public class Bicicleta {
         this.color = color;
     }
 
+    public boolean isRobada() {
+        return robada;
+    }
+
+    public void setRobada(boolean robada) {
+        this.robada = robada;
+    }
+
     public Persona getPersona() {
         return persona;
     }
@@ -43,4 +53,6 @@ public class Bicicleta {
     public void setPersona(Persona persona) {
         this.persona = persona;
     }
+
+
 }
