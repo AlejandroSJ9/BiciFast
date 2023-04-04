@@ -6,7 +6,7 @@ public class Main {
         menuPrincipal();
     }
     public static void menuPrincipal(){
-        int eleccion = 0;
+        int eleccion = -1;
         do {
             System.out.println("\n\t\t<------MENU PRINCIPAL----->");
             System.out.println("1. Seleccionar Usuario\n2. Registrar Bicicletas\n3. Visualizar bicicletas\n4. Editar usuario");
