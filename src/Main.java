@@ -9,7 +9,8 @@ public class Main {
         int eleccion = -1;
         do {
             System.out.println("\n\t\t<------MENU PRINCIPAL----->");
-            System.out.println("1. Seleccionar Usuario\n2. Visualizar bicicletas\n3. Editar usuario\n5. Ver rutas");
+            //Metodos crud
+            System.out.println("1. Seleccionar Usuario\n2. Agregar Usuario\n3. Borrar Usuario\n4.Editar Usuario\n5. Ver rutas");
             System.out.print("\tOpcion: ");
             eleccion = cin.nextInt();
             switch (eleccion){
@@ -17,6 +18,9 @@ public class Main {
                     menuUsuarios("maria");
                     break;
                 case 2:
+
+                    break;
+
             }
         }while (eleccion!=0);
     }
