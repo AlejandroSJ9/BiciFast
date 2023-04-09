@@ -3,12 +3,25 @@ public class Persona {
     private String apellido;
     private int id;
     private String phoneNumber;
+    private Bicicleta bicicleta;
+
 
     public Persona(String nombre, String apellido, int id, String phoneNumber) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.id = id;
         this.phoneNumber = phoneNumber;
+    }
+    public Persona(){
+
+    }
+
+    public Bicicleta getBicicleta() {
+        return bicicleta;
+    }
+
+    public void setBicicleta(Bicicleta bicicleta) {
+        this.bicicleta = bicicleta;
     }
 
     public String getNombre() {

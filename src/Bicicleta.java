@@ -1,10 +1,8 @@
-import java.util.Scanner;
-
 public class Bicicleta {
     private String marca;
     private int unique_id;
     private String color;
-   private Persona persona;
+    private Persona persona;
 
 
     public Bicicleta(String marca, int unique_id, String color, Persona persona) {
