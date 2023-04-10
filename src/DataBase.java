@@ -47,4 +47,6 @@ public class DataBase {
             propietarioAntiguo.setId(propietarioNuevo.getId());
         }
     }
+
+    //Funcion que imprime el hash map completo
 }

@@ -3,14 +3,17 @@ import java.util.Scanner;
 public class Main {
     public static Scanner cin = new Scanner(System.in);
     public static void main(String[] args) {
-        menuPrincipal();
+
     }
-    public static void menuPrincipal(){
+    public static void menuOrigen(){
+
+    }
+    public static void menuPrincipalAdministrador(){
         int eleccion = -1;
         do {
             System.out.println("\n\t\t<------MENU PRINCIPAL----->");
             //Metodos crud
-            System.out.println("1. Seleccionar Usuario\n2. Agregar Usuario\n3. Borrar Usuario\n4.Editar Usuario\n5. Ver rutas");
+            System.out.println("1. Listas Usuario\n2. Agregar Usuario\n3. Borrar Usuario\n4. Editar Usuario\n5. Ver rutas");
             System.out.print("\tOpcion: ");
             eleccion = cin.nextInt();
             switch (eleccion){

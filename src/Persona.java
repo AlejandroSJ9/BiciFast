@@ -4,6 +4,7 @@ public class Persona {
     private int id;
     private String phoneNumber;
     private Bicicleta bicicleta;
+    private String contraseña;
 
 
     public Persona(String nombre, String apellido, int id, String phoneNumber) {
