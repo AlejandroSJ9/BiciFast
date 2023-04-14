@@ -2,11 +2,25 @@ import java.util.Scanner;
 
 public class Main {
     public static Scanner cin = new Scanner(System.in);
+    public static DataBase dataBase = new DataBase();
     public static void main(String[] args) {
-
+        menuInicio();
     }
-    public static void menuOrigen(){
+    //menu que se pone apenas se ejecuta el programa
+    public static void menuInicio(){
+        int eleccion;
+        do{
+            System.out.println("\n\t\t<----MENU INGRESO----->\n1. Ingreso ADMIN\n2. Ingreso usuarios\n\tOpcion: ");
+            eleccion = cin.nextInt();
+            switch (eleccion){
+                case 1:
+                    menuPrincipalAdministrador();
+                    break;
+                case 2:
+                    //recorrer base de datos y verificar la contraseña
 
+            }
+        }while(eleccion!=0);
     }
     public static void menuPrincipalAdministrador(){
         int eleccion = -1;
@@ -41,7 +55,10 @@ public class Main {
                     String numero = cin.nextLine();
                     // se creo un objeto de la clase bicicleta y persona donde se envian los datos pedidos anteriormente
                     Bicicleta bicicleta = new Bicicleta(marca,id,color,new Persona(nombre,apellido,documento,numero));
-
+                    // Creacion objeto persona
+                    Persona persona = new Persona(nombre,apellido,documento,numero);
+                    dataBase.agregarBicicletaEnPersona(persona,bicicleta);
+                    dataBase.imprimirHashMap();
                     break;
 
             }

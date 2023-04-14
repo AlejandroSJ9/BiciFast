@@ -3,7 +3,7 @@ public class Persona {
     private String apellido;
     private int id;
     private String phoneNumber;
-    private Bicicleta bicicleta;
+
     private String contraseña;
 
 
@@ -15,14 +15,6 @@ public class Persona {
     }
     public Persona(){
 
-    }
-
-    public Bicicleta getBicicleta() {
-        return bicicleta;
-    }
-
-    public void setBicicleta(Bicicleta bicicleta) {
-        this.bicicleta = bicicleta;
     }
 
     public String getNombre() {

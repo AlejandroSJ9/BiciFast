@@ -1,17 +1,42 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class DataBase {
     private HashMap<Persona, ArrayList<Bicicleta>> dataBase;
 
+    //metodo constructor
+    public DataBase() {
+        this.dataBase = new HashMap<Persona, ArrayList<Bicicleta>>();
+    }
+
     //ESte metodo agrega una persona y bicicleta a la base de datos que es un hashmap
-    public void agregarBicicletaPersona(Persona p, Bicicleta bicicleta){
+    public void agregarBicicletaEnPersona(Persona p, Bicicleta bicicleta){
         if(!this.dataBase.containsKey(p)){
             this.dataBase.put(p,new ArrayList<Bicicleta>());
         }
         this.dataBase.get(p).add(bicicleta);
     }
-
+    //Agrego solo la persona al hash map con null en las bicicletas
+    public void agregarSoloPersona(Persona persona){
+        Bicicleta bicicleta = new Bicicleta();
+        if(!this.dataBase.containsKey(persona)){
+            //this.dataBase.put(persona,bicicleta);
+        }else{
+            System.out.println("Persona ya existe");
+        }
+    }
+    //Funcion que imprime el hash map completo
+    public void imprimirHashMap(){
+        for(Map.Entry<Persona,ArrayList<Bicicleta>> entry : this.dataBase.entrySet()){
+            Persona persona = entry.getKey();
+            ArrayList<Bicicleta> bicicletas = entry.getValue();
+            System.out.println("- " + persona.getNombre()+" " + persona.getApellido());
+            for(Bicicleta b : bicicletas){
+                System.out.println("\t* " + b.getMarca() + " - " + b.getUnique_id() + " ");
+            }
+        }
+    }
     //Verifica si la persona existe y si existe se verifica si la bicicleta aparece en la lista de bicicletas de la base de datos
     public void eliminarBicicleta(Persona p, Bicicleta bicicleta){
         if(this.dataBase.containsKey(p)){
@@ -48,5 +73,4 @@ public class DataBase {
         }
     }
 
-    //Funcion que imprime el hash map completo
 }

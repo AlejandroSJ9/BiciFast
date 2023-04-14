@@ -12,7 +12,9 @@ public class Bicicleta {
         this.color = color;
         this.persona = persona;
     }
+    public Bicicleta(){
 
+    }
     public String getMarca() {
         return marca;
     }
