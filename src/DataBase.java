@@ -17,15 +17,6 @@ public class DataBase {
         }
         this.dataBase.get(p).add(bicicleta);
     }
-    //Agrego solo la persona al hash map con null en las bicicletas
-    public void agregarSoloPersona(Persona persona){
-        Bicicleta bicicleta = new Bicicleta();
-        if(!this.dataBase.containsKey(persona)){
-            //this.dataBase.put(persona,bicicleta);
-        }else{
-            System.out.println("Persona ya existe");
-        }
-    }
     //Funcion que imprime el hash map completo
     public void imprimirHashMap(){
         for(Map.Entry<Persona,ArrayList<Bicicleta>> entry : this.dataBase.entrySet()){

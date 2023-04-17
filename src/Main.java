@@ -10,7 +10,7 @@ public class Main {
     public static void menuInicio(){
         int eleccion;
         do{
-            System.out.println("\n\t\t<----MENU INGRESO----->\n1. Ingreso ADMIN\n2. Ingreso usuarios\n\tOpcion: ");
+            System.out.print("\n\t\t<----MENU INGRESO----->\n1. Ingreso ADMIN\n2. Ingreso usuarios\n\tOpcion: ");
             eleccion = cin.nextInt();
             switch (eleccion){
                 case 1:
