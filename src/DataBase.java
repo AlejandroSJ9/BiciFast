@@ -22,7 +22,7 @@ public class DataBase {
         for(Map.Entry<Persona,ArrayList<Bicicleta>> entry : this.dataBase.entrySet()){
             Persona persona = entry.getKey();
             ArrayList<Bicicleta> bicicletas = entry.getValue();
-            System.out.println("- " + persona.getNombre()+" " + persona.getApellido());
+            System.out.println("- " + persona.getNombre()+" " + persona.getApellido() + " " + persona.getPhoneNumber()) ;
             for(Bicicleta b : bicicletas){
                 System.out.println("\t* " + b.getMarca() + " - " + b.getUnique_id() + " ");
             }
@@ -62,6 +62,16 @@ public class DataBase {
             propietarioAntiguo.setPhoneNumber(propietarioNuevo.getPhoneNumber());
             propietarioAntiguo.setId(propietarioNuevo.getId());
         }
+    }
+    // funcion que verifica si segun el nombre y la contraseña el usuario existe en la base de datos
+    public Persona validarLogIn(String user, String password){
+        for(Map.Entry<Persona,ArrayList<Bicicleta>> entry: this.dataBase.entrySet()){
+            Persona persona = entry.getKey();
+            if(persona.getNombre().equals(user) && persona.getPass().equals(password)){
+                return persona;
+            }
+        }
+        return null;
     }
 
 }

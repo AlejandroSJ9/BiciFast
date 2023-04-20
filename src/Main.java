@@ -8,16 +8,30 @@ public class Main {
     }
     //menu que se pone apenas se ejecuta el programa
     public static void menuInicio(){
+        Scanner scanner = new Scanner(System.in);
         int eleccion;
         do{
-            System.out.print("\n\t\t<----MENU INGRESO----->\n1. Ingreso ADMIN\n2. Ingreso usuarios\n\tOpcion: ");
+            System.out.print("\n\t\t<----MENU INGRESO---->\n1. Ingreso ADMIN\n2. Ingreso usuarios\n\tOpcion: ");
             eleccion = cin.nextInt();
+            cin.nextLine();
             switch (eleccion){
                 case 1:
                     menuPrincipalAdministrador();
                     break;
                 case 2:
-                    //recorrer base de datos y verificar la contraseña
+                    System.out.println("Ingresa solo tu nombre: ");
+                    String nombre = cin.nextLine();
+                    System.out.println("Ingresa tu contraseña: ");
+                    String pass = cin.nextLine();
+                    //verifica si la persona que trajo existe en la base de datos
+                    if(dataBase.validarLogIn(nombre,pass) == null){
+                        System.out.println("Datos incorrectos");
+                        break;
+                    }else{
+                        Persona p = dataBase.validarLogIn(nombre,pass);
+                        menuUsuarios(p);
+                    }
+
 
             }
         }while(eleccion!=0);
@@ -32,10 +46,10 @@ public class Main {
             eleccion = cin.nextInt();
             switch (eleccion){
                 case 1:
-                    menuUsuarios("maria");
+
                     break;
                 case 2:
-                    //Se pidio el ingreso de la bicicleta y los datos del usuario
+                    //Ingreso de la bicicleta y los datos del usuario
                     Scanner cin = new Scanner(System.in);
                     System.out.println("Ingrese la marca de su bicicleta: ");
                     String marca= cin.nextLine();
@@ -53,23 +67,23 @@ public class Main {
                     cin.nextLine();
                     System.out.println("Digite su numero de celular: ");
                     String numero = cin.nextLine();
+                    System.out.println("Ingrese su contraseña: ");
+                    String pass = cin.nextLine();
                     // se creo un objeto de la clase bicicleta y persona donde se envian los datos pedidos anteriormente
-                    Bicicleta bicicleta = new Bicicleta(marca,id,color,new Persona(nombre,apellido,documento,numero));
+                    Bicicleta bicicleta = new Bicicleta(marca,id,color,new Persona(nombre,apellido,documento,numero,pass));
                     // Creacion objeto persona
-                    Persona persona = new Persona(nombre,apellido,documento,numero);
+                    Persona persona = new Persona(nombre,apellido,documento,numero,pass);
                     dataBase.agregarBicicletaEnPersona(persona,bicicleta);
-                    dataBase.imprimirHashMap();
                     break;
 
             }
         }while (eleccion!=0);
     }
-    public static void menuUsuarios(String nombreUser){
+    public static void menuUsuarios(Persona persona){
         int eleccion = 0;
         do {
-            System.out.println("\n\t\t<------MENU USUARIO----->\n\t\tUsuario: "+ nombreUser);
+            System.out.println("\n\t\t<------MENU USUARIO----->\n\t\tUsuario: "+ persona.getNombre());
             System.out.println("1. Ver bicicletas\n2. Rutas\n3. Registrar bici");
-            System.out.println("1. Seleccionar Usuario\n2. Registrar Bicicletas\n3. Visualizar bicicletas\n4. Editar usuario\n0.Salir");
             System.out.print("\tOpcion: ");
             eleccion = cin.nextInt();
 

@@ -4,14 +4,15 @@ public class Persona {
     private int id;
     private String phoneNumber;
 
-    private String contraseña;
+    private String pass;
 
 
-    public Persona(String nombre, String apellido, int id, String phoneNumber) {
+    public Persona(String nombre, String apellido, int id, String phoneNumber,String  pass) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.id = id;
         this.phoneNumber = phoneNumber;
+        this.pass = pass;
     }
     public Persona(){
 
@@ -47,5 +48,13 @@ public class Persona {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public String getPass() {
+        return pass;
+    }
+
+    public void setPass(String pass) {
+        this.pass = pass;
     }
 }
