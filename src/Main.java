@@ -31,8 +31,6 @@ public class Main {
                         Persona p = dataBase.validarLogIn(nombre,pass);
                         menuUsuarios(p);
                     }
-
-
             }
         }while(eleccion!=0);
     }
@@ -83,13 +81,13 @@ public class Main {
         int eleccion = 0;
         do {
             System.out.println("\n\t\t<------MENU USUARIO----->\n\t\tUsuario: "+ persona.getNombre());
-            System.out.println("1. Ver bicicletas\n2. Rutas\n3. Registrar bici");
+            System.out.println("1. Ver bicicletas\n2. Rutas\n3. Registrar bici\n4. Eliminar bici\n5. Actualizar bici");
             System.out.print("\tOpcion: ");
             eleccion = cin.nextInt();
 
             switch (eleccion){
                 case 1:
-
+                        dataBase.imprimirBicicletas(persona);
                     break;
                 case 2:
 

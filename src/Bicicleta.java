@@ -15,6 +15,31 @@ public class Bicicleta {
     public Bicicleta(){
 
     }
+
+    public Bicicleta(String marca, int unique_id, String color, Persona persona, boolean robada) {
+    }
+
+    @Override
+    public String toString() {
+        // Convertir los atributos a una cadena en el formato "marca|unique_id|color|persona|robada"
+        return marca + "|" + unique_id + "|" + color + "|" + persona.toString() + "|" + robada;
+    }
+
+    // Método estático para crear un objeto Bicicleta a partir de una cadena en el formato "marca|unique_id|color|persona|robada"
+    public static Bicicleta fromString(String bicicletaString) {
+        String[] partes = bicicletaString.split("\\|"); // Separar los atributos por el delimitador
+
+        // Obtener los atributos de la cadena
+        String marca = partes[0];
+        int unique_id = Integer.parseInt(partes[1]);
+        String color = partes[2];
+        Persona persona = Persona.fromString(partes[3]);
+        boolean robada = Boolean.parseBoolean(partes[4]);
+
+        // Crear un nuevo objeto Bicicleta con los atributos obtenidos
+        return new Bicicleta(marca, unique_id, color, persona, robada);
+    }
+    
     public String getMarca() {
         return marca;
     }

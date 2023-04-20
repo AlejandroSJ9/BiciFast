@@ -28,6 +28,19 @@ public class DataBase {
             }
         }
     }
+    public void imprimirBicicletas(Persona personaLOGIN){
+        for(Map.Entry<Persona,ArrayList<Bicicleta>> entry : this.dataBase.entrySet()){
+            Persona personaDB = entry.getKey();
+            if(personaLOGIN == personaDB){
+                ArrayList<Bicicleta> bicicletaArrayList = entry.getValue();
+                for(Bicicleta b : bicicletaArrayList){
+                    System.out.println("\tBicicletas de "+ personaLOGIN.getNombre() + ":\n"+ b.getMarca() + " - " + b.getUnique_id() + " ");
+                }
+            }else{
+                System.out.println("No hay bicicletas");
+            }
+        }
+    }
     //Verifica si la persona existe y si existe se verifica si la bicicleta aparece en la lista de bicicletas de la base de datos
     public void eliminarBicicleta(Persona p, Bicicleta bicicleta){
         if(this.dataBase.containsKey(p)){
