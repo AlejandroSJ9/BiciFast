@@ -6,9 +6,19 @@ public class Rutas {
     private String nombreRuta;
     private int distanciaEnKM;
 
-    public Rutas() {
+    public Rutas(String nombreRuta, int distanciaEnKM){
+        this.nombreRuta = nombreRuta;
+        this.distanciaEnKM = distanciaEnKM;
+        competidores = new HashMap<>();
     }
 
+    public void agregarCompetidores(Persona p, int tiempo){
+        this.competidores.put(p,tiempo);
+    }
+
+    public int obtenerTiempoCompetidor(Persona persona){
+        return this.competidores.get(persona);
+    }
     public HashMap<Persona, Integer> getCompetidores() {
         return competidores;
     }

@@ -1,9 +1,20 @@
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
     public static Scanner cin = new Scanner(System.in);
     public static DataBase dataBase = new DataBase();
+    public static ArrayList<Rutas> rutas;
     public static void main(String[] args) {
+        Rutas ruta1 = new Rutas("Ruta A" , 5);
+        Rutas ruta2 = new Rutas("Ruta B" , 2);
+        Rutas ruta3 = new Rutas("Ruta C" , 3);
+        Rutas ruta4 = new Rutas("Ruta D" , 15);
+        rutas.set(0, ruta1);
+        rutas.set(1, ruta2);
+        rutas.set(2, ruta3);
+        rutas.set(3, ruta4);
         menuInicio();
     }
     //menu que se pone apenas se ejecuta el programa
@@ -90,7 +101,7 @@ public class Main {
                         dataBase.imprimirBicicletas(persona);
                     break;
                 case 2:
-
+                        menuUsuariosRutas();
                     break;
                 case 3:
                     break;
@@ -104,6 +115,19 @@ public class Main {
                 case 1:
                     break;
                 case 2:
+            }
+        }while (eleccion!=0);
+    }
+    public static void menuUsuariosRutas(){
+        int eleccion = 0;
+        do {
+            System.out.println("\n\t\t<----Menu Rutas Usuario---->\n1. Regitrar tiempo en ruta específica\n2. Ver mis tiempos en las rutas\n\tOpcion: ");
+            eleccion = cin.nextInt();
+            switch (eleccion){
+                case 1:
+
+                case 2:
+
             }
         }while (eleccion!=0);
     }

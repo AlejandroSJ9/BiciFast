@@ -1,9 +1,10 @@
+import java.util.ArrayList;
+
 public class Persona {
     private String nombre;
     private String apellido;
     private int id;
     private String phoneNumber;
-
     private String pass;
 
 
@@ -38,8 +39,6 @@ public class Persona {
         // Crear un nuevo objeto Persona con los atributos obtenidos
         return new Persona(nombre, apellido, id, phoneNumber, pass);
     }
-
-
 
     public String getNombre() {
         return nombre;
