@@ -1,13 +1,21 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class DataBase {
+public class DataBase implements Serializable {
     private HashMap<Persona, ArrayList<Bicicleta>> dataBase;
 
     //metodo constructor
-    public DataBase() {
-        this.dataBase = new HashMap<Persona, ArrayList<Bicicleta>>();
+    public DataBase(HashMap hashMap) {
+        this.dataBase = hashMap;
+    }
+    public DataBase(){
+
+    }
+
+    public HashMap<Persona, ArrayList<Bicicleta>> getDataBase() {
+        return dataBase;
     }
 
     //ESte metodo agrega una persona y bicicleta a la base de datos que es un hashmap

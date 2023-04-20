@@ -1,11 +1,12 @@
-public class Persona {
-    private String nombre;
-    private String apellido;
-    private int id;
-    private String phoneNumber;
+import java.io.Serializable;
+import java.util.Objects;
 
-    private String pass;
-
+public class Persona implements Serializable {
+    public String nombre;
+    public String apellido;
+    public int id;
+    public String phoneNumber;
+    public String pass;
 
     public Persona(String nombre, String apellido, int id, String phoneNumber,String  pass) {
         this.nombre = nombre;
@@ -17,6 +18,24 @@ public class Persona {
     public Persona(){
 
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Persona)) return false;
+        Persona persona = (Persona) o;
+        return id == persona.id &&
+                Objects.equals(nombre, persona.nombre) &&
+                Objects.equals(apellido, persona.apellido) &&
+                Objects.equals(phoneNumber, persona.phoneNumber) &&
+                Objects.equals(pass, persona.pass);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nombre, apellido, id, phoneNumber, pass);
+    }
+
 
     @Override
     public String toString() {
@@ -38,8 +57,6 @@ public class Persona {
         // Crear un nuevo objeto Persona con los atributos obtenidos
         return new Persona(nombre, apellido, id, phoneNumber, pass);
     }
-
-
 
     public String getNombre() {
         return nombre;

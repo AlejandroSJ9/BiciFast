@@ -1,9 +1,13 @@
+import java.io.File;
+import java.io.Serializable;
 import java.util.Scanner;
 
-public class Main {
+public class Main implements Serializable {
+    public static final String NAME_FILE = "dataBase.txt";
     public static Scanner cin = new Scanner(System.in);
     public static DataBase dataBase = new DataBase();
     public static void main(String[] args) {
+        dataBase = FileManager.cargarHashMapDesdeArchivo(NAME_FILE);
         menuInicio();
     }
     //menu que se pone apenas se ejecuta el programa
@@ -37,6 +41,7 @@ public class Main {
     public static void menuPrincipalAdministrador(){
         int eleccion = -1;
         do {
+
             System.out.println("\n\t\t<------MENU PRINCIPAL----->");
             //Metodos crud
             System.out.println("1. Listas Usuario\n2. Agregar Usuario\n3. Borrar Usuario\n4. Editar Usuario\n5. Ver rutas");
@@ -72,12 +77,15 @@ public class Main {
                     // Creacion objeto persona
                     Persona persona = new Persona(nombre,apellido,documento,numero,pass);
                     dataBase.agregarBicicletaEnPersona(persona,bicicleta);
+                    FileManager.guardarHashMapEnArchivo(NAME_FILE,dataBase);
+
                     break;
 
             }
         }while (eleccion!=0);
     }
     public static void menuUsuarios(Persona persona){
+        dataBase = FileManager.cargarHashMapDesdeArchivo(NAME_FILE);
         int eleccion = 0;
         do {
             System.out.println("\n\t\t<------MENU USUARIO----->\n\t\tUsuario: "+ persona.getNombre());

@@ -1,4 +1,6 @@
-public class Bicicleta {
+import java.io.Serializable;
+
+public class Bicicleta implements Serializable {
     private String marca;
     private int unique_id;
     private String color;
