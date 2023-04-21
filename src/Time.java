@@ -1,12 +1,13 @@
+
 import java.util.TimerTask;
-import java.util.timerTask;
-import java.util.timer;
 import java.util.ArrayList;
+import java.util.Timer;
+
 //Verificar que no se sobreescriba los datos en las mismas rutas.
 
-public class Timer {
+public class Time {
     private long tiempoTranscurrido=0;
-    private Timer timer;
+    private Timer time;
     private TimerTask tarea;
 
     private boolean pausado;
@@ -14,7 +15,7 @@ public class Timer {
     private ArrayList<Long> tiemposGuardados;
 
     public void Cronometro(){
-        timer=new Timer();
+        time =new Timer();
         pausado=true;
         tiemposGuardados= new ArrayList<>();
     }
@@ -28,7 +29,7 @@ public class Timer {
                     System.out.println(formatoTiempo(tiempoTranscurrido));
                 }
             };
-            timer.schedule(tarea,0,1);
+            time.schedule(tarea,0,1);
             pausado=false;
         }
     }
