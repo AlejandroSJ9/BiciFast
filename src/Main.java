@@ -5,12 +5,16 @@ import java.util.Scanner;
 public class Main {
     public static Scanner cin = new Scanner(System.in);
     public static DataBase dataBase = new DataBase();
-    public static ArrayList<Rutas> rutas;
+    public static ArrayList<Rutas> rutas = new ArrayList<>();
     public static void main(String[] args) {
         Rutas ruta1 = new Rutas("Ruta A" , 5);
         Rutas ruta2 = new Rutas("Ruta B" , 2);
         Rutas ruta3 = new Rutas("Ruta C" , 3);
         Rutas ruta4 = new Rutas("Ruta D" , 15);
+        rutas.add(ruta1);
+        rutas.add(ruta2);
+        rutas.add(ruta3);
+        rutas.add(ruta4);
         rutas.set(0, ruta1);
         rutas.set(1, ruta2);
         rutas.set(2, ruta3);
@@ -50,12 +54,12 @@ public class Main {
         do {
             System.out.println("\n\t\t<------MENU PRINCIPAL----->");
             //Metodos crud
-            System.out.println("1. Listas Usuario\n2. Agregar Usuario\n3. Borrar Usuario\n4. Editar Usuario\n5. Ver rutas");
+            System.out.println("1. Imprimir Base Datos\n2. Agregar Usuario\n3. Borrar Usuario\n4. Editar Usuario\n5. Ver rutas");
             System.out.print("\tOpcion: ");
             eleccion = cin.nextInt();
             switch (eleccion){
                 case 1:
-
+                    dataBase.imprimirHashMap();
                     break;
                 case 2:
                     //Ingreso de la bicicleta y los datos del usuario
@@ -79,7 +83,7 @@ public class Main {
                     System.out.println("Ingrese su contraseña: ");
                     String pass = cin.nextLine();
                     // se creo un objeto de la clase bicicleta y persona donde se envian los datos pedidos anteriormente
-                    Bicicleta bicicleta = new Bicicleta(marca,id,color,new Persona(nombre,apellido,documento,numero,pass));
+                    Bicicleta bicicleta = new Bicicleta(marca,id,color,new Persona(nombre,apellido,documento,numero,pass),false);
                     // Creacion objeto persona
                     Persona persona = new Persona(nombre,apellido,documento,numero,pass);
                     dataBase.agregarBicicletaEnPersona(persona,bicicleta);
@@ -104,9 +108,39 @@ public class Main {
                         menuUsuariosRutas();
                     break;
                 case 3:
+                    cin.nextLine();
+                    System.out.println("Ingrese la marca de su bicicleta: ");
+                    String marca= cin.nextLine();
+                    System.out.println("Ingrese el id de su bicicleta: ");
+                    int id = cin.nextInt();
+                    cin.nextLine();
+                    System.out.println("Ingrese el color de su bicicleta: ");
+                    String color = cin.nextLine();
+                    Bicicleta b = new Bicicleta(marca,id,color,persona,false);
+                    dataBase.agregarBicicletaEnPersona(persona,b);
                     break;
                 case 4:
+                    dataBase.imprimirBicicletas(persona);
+                    System.out.print("\n\tCual bicicleta vas a eliminar?: \nOpcion");
+                    int biciElegir = cin.nextInt();
+                    dataBase.eliminarBicicleta(persona,dataBase.buscarBicicletaUsuario(persona,biciElegir-1));
                     break;
+                case 5:
+                    dataBase.imprimirBicicletas(persona);
+                    cin.nextLine();
+                    System.out.print("\n\tCual bicicleta vas a editar?: \nOpcion");
+                    int biciEditar = cin.nextInt();
+                    Bicicleta bicicletaEdit = dataBase.buscarBicicletaUsuario(persona,biciEditar-1);
+                    cin.nextLine();
+                    System.out.println("Ingrese la marca de su bicicleta: ");
+                    String marca1= cin.nextLine();
+                    System.out.println("Ingrese el id de su bicicleta: ");
+                    int id1 = cin.nextInt();
+                    cin.nextLine();
+                    System.out.println("Ingrese el color de su bicicleta: ");
+                    String color1 = cin.nextLine();
+                    Bicicleta b1 = new Bicicleta(marca1,id1,color1,persona,false);
+                    dataBase.actualizarBicicleta(persona,b1,bicicletaEdit);
                 default:
                     System.out.println("Opcion invalida, por favor digite una valida");
 
@@ -130,5 +164,8 @@ public class Main {
 
             }
         }while (eleccion!=0);
+    }
+    public static void menuRegistrarTiempoRuta(){
+
     }
 }

@@ -6,17 +6,15 @@ public class Bicicleta {
     private boolean robada;
 
 
-    public Bicicleta(String marca, int unique_id, String color, Persona persona) {
+    public Bicicleta(String marca, int unique_id, String color, Persona persona, boolean robada) {
         this.marca = marca;
         this.unique_id = unique_id;
         this.color = color;
         this.persona = persona;
+        this.robada = robada;
     }
     public Bicicleta(){
 
-    }
-
-    public Bicicleta(String marca, int unique_id, String color, Persona persona, boolean robada) {
     }
 
     @Override

@@ -12,6 +12,10 @@ public class Rutas {
         competidores = new HashMap<>();
     }
 
+    public Rutas(){
+
+    }
+
     public void agregarCompetidores(Persona p, int tiempo){
         this.competidores.put(p,tiempo);
     }
@@ -19,6 +23,7 @@ public class Rutas {
     public int obtenerTiempoCompetidor(Persona persona){
         return this.competidores.get(persona);
     }
+
     public HashMap<Persona, Integer> getCompetidores() {
         return competidores;
     }

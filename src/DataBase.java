@@ -33,8 +33,10 @@ public class DataBase {
             Persona personaDB = entry.getKey();
             if(personaLOGIN == personaDB){
                 ArrayList<Bicicleta> bicicletaArrayList = entry.getValue();
+                int contador = 0;
                 for(Bicicleta b : bicicletaArrayList){
-                    System.out.println("\tBicicletas de "+ personaLOGIN.getNombre() + ":\n"+ b.getMarca() + " - " + b.getUnique_id() + " ");
+                    System.out.println(contador+1+ ". " + b.getMarca() + " | " + b.getUnique_id() + " | "+ b.getColor() );
+                    contador++;
                 }
             }else{
                 System.out.println("No hay bicicletas");
@@ -86,5 +88,16 @@ public class DataBase {
         }
         return null;
     }
+
+    public Bicicleta buscarBicicletaUsuario(Persona persona, int posicion){
+        ArrayList<Bicicleta> bicicletas = this.dataBase.get(persona);
+        if (bicicletas != null && posicion >= 0 && posicion < bicicletas.size()) {
+            return bicicletas.get(posicion);
+        } else {
+            System.out.println("Índice fuera de rango o usuario no encontrado");
+            return null;
+        }
+    }
+
 
 }
