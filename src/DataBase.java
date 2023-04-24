@@ -35,7 +35,7 @@ public class DataBase {
                 ArrayList<Bicicleta> bicicletaArrayList = entry.getValue();
                 int contador = 0;
                 for(Bicicleta b : bicicletaArrayList){
-                    System.out.println(contador+1+ ". " + b.getMarca() + " | " + b.getUnique_id() + " | "+ b.getColor() );
+                    System.out.println(contador+1+ ". Marca: " + b.getMarca() + " | " + "ID : "+b.getUnique_id() + " | Color: "+ b.getColor() );
                     contador++;
                 }
             }else{
