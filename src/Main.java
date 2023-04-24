@@ -81,7 +81,7 @@ public class Main {
                     // se creo un objeto de la clase bicicleta y persona donde se envian los datos pedidos anteriormente
                     Bicicleta bicicleta = new Bicicleta(marca,id,color,new Persona(nombre,apellido,documento,numero,pass));
                     // Creacion objeto persona
-                    Persona persona = new Persona(nombre,apellido,documento,numero,pass);
+                    Persona persona = new Persona(nombre,apellido,documento,numero,pass);//no se crea doble?
                     dataBase.agregarBicicletaEnPersona(persona,bicicleta);
                     break;
 
@@ -98,7 +98,7 @@ public class Main {
 
             switch (eleccion){
                 case 1:
-                        dataBase.imprimirBicicletas(persona);
+                        dataBase.imprimirBicicletas(persona); //Mostrarlo mas lindo.
                     break;
                 case 2:
                         menuUsuariosRutas();
