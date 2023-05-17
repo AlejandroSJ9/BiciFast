@@ -1,17 +1,19 @@
+package Modelo;
+
 import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.ArrayList;
 
 // Verificar que no se sobreescriba los datos en las mismas rutas.
-public class Cronometro {
+public class CronometroModel {
     private long tiempoTranscurrido = 0;
     private Timer timer;
     private TimerTask tarea;
     private boolean enEjecucion;
     private ArrayList<Long> tiemposGuardados;
 
-    public Cronometro() {
+    public CronometroModel() {
         timer = new Timer();
         enEjecucion = false;
         tiemposGuardados = new ArrayList<Long>();
