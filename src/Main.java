@@ -145,11 +145,6 @@ public class Main {
                     System.out.println("Opcion invalida, por favor digite una valida");
 
             }
-            switch (eleccion){
-                case 1:
-                    break;
-                case 2:
-            }
         }while (eleccion!=0);
     }
     public static void menuUsuariosRutas(){

@@ -1,8 +1,9 @@
 import java.util.HashMap;
+import java.util.Map;
 
 public class Rutas {
     //persona y el tiempo que le tomo hacer esa ruta
-    private HashMap<Persona,Integer> competidores;
+    private HashMap<Persona,Long> competidores;
     private String nombreRuta;
     private int distanciaEnKM;
 
@@ -15,20 +16,29 @@ public class Rutas {
     public Rutas(){
 
     }
-
-    public void agregarCompetidores(Persona p, int tiempo){
+    public void imprimirPorCondicionPersona(Persona personaFiltro){
+        int contador = 1;
+        for(Map.Entry<Persona,Long> entry : competidores.entrySet()){
+            Persona personaDB = entry.getKey();
+            Long tiempoDB = entry.getValue();
+            if(personaFiltro.equals(personaDB)){
+                System.out.println(this.nombreRuta + " : \n" + contador + ". " + tiempoDB);
+            }
+        }
+    }
+    public void agregarCompetidores(Persona p, Long tiempo){
         this.competidores.put(p,tiempo);
     }
 
-    public int obtenerTiempoCompetidor(Persona persona){
+    public Long obtenerTiempoCompetidor(Persona persona){
         return this.competidores.get(persona);
     }
 
-    public HashMap<Persona, Integer> getCompetidores() {
+    public HashMap<Persona, Long> getCompetidores() {
         return competidores;
     }
 
-    public void setCompetidores(HashMap<Persona, Integer> competidores) {
+    public void setCompetidores(HashMap<Persona, Long> competidores) {
         this.competidores = competidores;
     }
 
