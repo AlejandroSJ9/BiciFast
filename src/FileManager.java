@@ -1,10 +1,13 @@
+import Modelo.BicicletaModel;
+import Modelo.PersonaModel;
+
 import java.io.*;
 import java.util.*;
 
 public class FileManager {
     // Método para cargar un HashMap desde un archivo de texto
-    public static HashMap<Persona, ArrayList<Bicicleta>> cargarHashMapDesdeArchivo(String nombreArchivo) {
-        HashMap<Persona, ArrayList<Bicicleta>> hashMap = new HashMap<>();
+    public static HashMap<PersonaModel, ArrayList<BicicletaModel>> cargarHashMapDesdeArchivo(String nombreArchivo) {
+        HashMap<PersonaModel, ArrayList<BicicletaModel>> hashMap = new HashMap<>();
 
         try {
             File archivo = new File(nombreArchivo);
@@ -16,7 +19,7 @@ public class FileManager {
             FileInputStream fis = new FileInputStream(archivo);
             ObjectInputStream ois = new ObjectInputStream(fis);
 
-            hashMap = (HashMap<Persona, ArrayList<Bicicleta>>) ois.readObject();
+            hashMap = (HashMap<PersonaModel, ArrayList<BicicletaModel>>) ois.readObject();
 
             ois.close();
             fis.close();
@@ -28,7 +31,7 @@ public class FileManager {
     }
 
     // Método para guardar un HashMap en un archivo de texto
-    public static void guardarHashMapEnArchivo(String nombreArchivo, HashMap<Persona, ArrayList<Bicicleta>> hashMap) {
+    public static void guardarHashMapEnArchivo(String nombreArchivo, HashMap<PersonaModel, ArrayList<BicicletaModel>> hashMap) {
         try {
             FileOutputStream fos = new FileOutputStream(nombreArchivo);
             ObjectOutputStream oos = new ObjectOutputStream(fos);

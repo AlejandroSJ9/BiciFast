@@ -1,16 +1,20 @@
-import java.lang.reflect.Array;
+import Controlador.DataBase;
+import Modelo.BicicletaModel;
+import Modelo.PersonaModel;
+import Modelo.RutasModel;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
     public static Scanner cin = new Scanner(System.in);
     public static DataBase dataBase = new DataBase();
-    public static ArrayList<Rutas> rutas = new ArrayList<>();
+    public static ArrayList<RutasModel> rutas = new ArrayList<>();
     public static void main(String[] args) {
-        Rutas ruta1 = new Rutas("Ruta A" , 5);
-        Rutas ruta2 = new Rutas("Ruta B" , 2);
-        Rutas ruta3 = new Rutas("Ruta C" , 3);
-        Rutas ruta4 = new Rutas("Ruta D" , 15);
+        RutasModel ruta1 = new RutasModel("Ruta A" , 5);
+        RutasModel ruta2 = new RutasModel("Ruta B" , 2);
+        RutasModel ruta3 = new RutasModel("Ruta C" , 3);
+        RutasModel ruta4 = new RutasModel("Ruta D" , 15);
         rutas.add(ruta1);
         rutas.add(ruta2);
         rutas.add(ruta3);
@@ -43,7 +47,7 @@ public class Main {
                         System.out.println("Datos incorrectos");
                         break;
                     }else{
-                        Persona p = dataBase.validarLogIn(nombre,pass);
+                        PersonaModel p = dataBase.validarLogIn(nombre,pass);
                         menuUsuarios(p);
                     }
             }
@@ -62,93 +66,88 @@ public class Main {
                     dataBase.imprimirHashMap();
                     break;
                 case 2:
-                    //Ingreso de la bicicleta y los datos del usuario
-                    Scanner cin = new Scanner(System.in);
-                    System.out.println("Ingrese la marca de su bicicleta: ");
-                    String marca= cin.nextLine();
-                    System.out.println("Ingrese el id de su bicicleta: ");
-                    int id = cin.nextInt();
-                    cin.nextLine();
-                    System.out.println("Ingrese el color de su bicicleta: ");
-                    String color = cin.nextLine();
-                    System.out.println("Digite su nombre: ");
-                    String nombre = cin.nextLine();
-                    System.out.println("Digite sus apellidos: ");
-                    String apellido = cin.nextLine();
-                    System.out.println("Digite su numero de documento: ");
-                    int documento = cin.nextInt();
-                    cin.nextLine();
-                    System.out.println("Digite su numero de celular: ");
-                    String numero = cin.nextLine();
-                    System.out.println("Ingrese su contraseña: ");
-                    String pass = cin.nextLine();
-                    // se creo un objeto de la clase bicicleta y persona donde se envian los datos pedidos anteriormente
-                    Bicicleta bicicleta = new Bicicleta(marca,id,color,new Persona(nombre,apellido,documento,numero,pass),false);
-                    // Creacion objeto persona
-                    Persona persona = new Persona(nombre,apellido,documento,numero,pass);//no se crea doble?
-                    dataBase.agregarBicicletaEnPersona(persona,bicicleta);
+                    PersonaModel personaModel = registrarPersonaMenu();
+                    BicicletaModel bicicletaModel = registarBicicletaMenu(personaModel);
+                    dataBase.agregarBicicletaEnPersona(personaModel, bicicletaModel);
                     break;
-
             }
         }while (eleccion!=0);
     }
-    public static void menuUsuarios(Persona persona){
+    public static PersonaModel registrarPersonaMenu(){
+        PersonaModel p;
+        try {
+            cin.nextLine();
+            System.out.println("Digite su nombre: ");
+            String nombre = cin.nextLine();
+            System.out.println("Digite sus apellidos: ");
+            String apellido = cin.nextLine();
+            System.out.println("Digite su numero de documento: ");
+            int documento = cin.nextInt();
+            cin.nextLine();
+            System.out.println("Digite su numero de celular: ");
+            String numero = cin.nextLine();
+            System.out.println("Ingrese su contraseña: ");
+            String pass = cin.nextLine();
+            p = new PersonaModel(nombre,apellido,documento,numero,pass);
+        }catch (Exception e){
+            System.out.println("Error, intente nuevamente");
+            return registrarPersonaMenu();
+        }
+        return p;
+    }
+
+    public static BicicletaModel registarBicicletaMenu(PersonaModel personaModel){
+        BicicletaModel b1;
+        try{
+            cin.nextLine();
+            System.out.println("Ingrese la marca de su bicicleta: ");
+            String marca1= cin.nextLine();
+            System.out.println("Ingrese el id de su bicicleta: ");
+            int id1 = cin.nextInt();
+            cin.nextLine();
+            System.out.println("Ingrese el color de su bicicleta: ");
+            String color1 = cin.nextLine();
+            b1 = new BicicletaModel(marca1,id1,color1, personaModel,false);
+        }catch (Exception e){
+            System.out.println("Error al ingresar los datos!");
+            return registarBicicletaMenu(personaModel);
+        }
+        return b1;
+    }
+    public static void menuUsuarios(PersonaModel personaModel){
         int eleccion = 0;
         do {
-            System.out.println("\n\t\t<------MENU USUARIO----->\n\t\tUsuario: "+ persona.getNombre());
+            System.out.println("\n\t\t<------MENU USUARIO----->\n\t\tUsuario: "+ personaModel.getNombre());
             System.out.println("1. Ver bicicletas\n2. Rutas\n3. Registrar bici\n4. Eliminar bici\n5. Actualizar bici");
             System.out.print("\tOpcion: ");
             eleccion = cin.nextInt();
 
             switch (eleccion){
                 case 1:
-                        dataBase.imprimirBicicletas(persona); //Mostrarlo mas lindo.
+                    dataBase.imprimirBicicletas(personaModel);
                     break;
                 case 2:
-                        menuUsuariosRutas();
+                    menuUsuariosRutas();
                     break;
                 case 3:
-                    cin.nextLine();
-                    System.out.println("Ingrese la marca de su bicicleta: ");
-                    String marca= cin.nextLine();
-                    System.out.println("Ingrese el id de su bicicleta: ");
-                    int id = cin.nextInt();
-                    cin.nextLine();
-                    System.out.println("Ingrese el color de su bicicleta: ");
-                    String color = cin.nextLine();
-                    Bicicleta b = new Bicicleta(marca,id,color,persona,false);
-                    dataBase.agregarBicicletaEnPersona(persona,b);
+                    dataBase.agregarBicicletaEnPersona(personaModel,registarBicicletaMenu(personaModel));
                     break;
                 case 4:
-                    dataBase.imprimirBicicletas(persona);
+                    dataBase.imprimirBicicletas(personaModel);
                     System.out.print("\n\tCual bicicleta vas a eliminar?: \nOpcion");
                     int biciElegir = cin.nextInt();
-                    dataBase.eliminarBicicleta(persona,dataBase.buscarBicicletaUsuario(persona,biciElegir-1));
+                    dataBase.eliminarBicicleta(personaModel,dataBase.buscarBicicletaUsuario(personaModel,biciElegir-1));
                     break;
                 case 5:
-                    dataBase.imprimirBicicletas(persona);
+                    dataBase.imprimirBicicletas(personaModel);
                     cin.nextLine();
                     System.out.print("\n\tCual bicicleta vas a editar?: \nOpcion");
                     int biciEditar = cin.nextInt();
-                    Bicicleta bicicletaEdit = dataBase.buscarBicicletaUsuario(persona,biciEditar-1);
-                    cin.nextLine();
-                    System.out.println("Ingrese la marca de su bicicleta: ");
-                    String marca1= cin.nextLine();
-                    System.out.println("Ingrese el id de su bicicleta: ");
-                    int id1 = cin.nextInt();
-                    cin.nextLine();
-                    System.out.println("Ingrese el color de su bicicleta: ");
-                    String color1 = cin.nextLine();
-                    Bicicleta b1 = new Bicicleta(marca1,id1,color1,persona,false);
-                    dataBase.actualizarBicicleta(persona,b1,bicicletaEdit);
+                    BicicletaModel bicicletaModelEdit = dataBase.buscarBicicletaUsuario(personaModel,biciEditar-1);
+                    dataBase.actualizarBicicleta(personaModel,registarBicicletaMenu(personaModel), bicicletaModelEdit);
                 default:
                     System.out.println("Opcion invalida, por favor digite una valida");
 
-            }
-            switch (eleccion){
-                case 1:
-                    break;
-                case 2:
             }
         }while (eleccion!=0);
     }
