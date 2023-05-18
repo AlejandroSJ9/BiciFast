@@ -6,7 +6,7 @@ public class PersonaModel {
     private int id;
     private String phoneNumber;
     private String pass;
-
+    private double ahorroCO2;
 
     public PersonaModel(String nombre, String apellido, int id, String phoneNumber, String  pass) {
         this.nombre = nombre;
@@ -38,6 +38,14 @@ public class PersonaModel {
 
         // Crear un nuevo objeto Persona con los atributos obtenidos
         return new PersonaModel(nombre, apellido, id, phoneNumber, pass);
+    }
+
+    public double getAhorroCO2() {
+        return ahorroCO2;
+    }
+
+    public void setAhorroCO2(double ahorroCO2) {
+        this.ahorroCO2 = ahorroCO2;
     }
 
     public String getNombre() {
