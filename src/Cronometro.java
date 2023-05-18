@@ -2,19 +2,17 @@ import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.ArrayList;
-
 // Verificar que no se sobreescriba los datos en las mismas rutas.
 public class Cronometro {
     private long tiempoTranscurrido = 0;
     private Timer timer;
     private TimerTask tarea;
     private boolean enEjecucion;
-    private ArrayList<Long> tiemposGuardados;
+
 
     public Cronometro() {
         timer = new Timer();
         enEjecucion = false;
-        tiemposGuardados = new ArrayList<Long>();
     }
 
     public void iniciar() {
@@ -23,15 +21,25 @@ public class Cronometro {
                 @Override
                 public void run() {
                     tiempoTranscurrido += 1;
-                    System.out.println("\r" + formatoTiempo(tiempoTranscurrido));
+                    System.out.print("\r" + formatoTiempo(tiempoTranscurrido));
                 }
             };
-            timer.schedule(tarea, 0, 1);
+            timer.schedule(tarea, 0, 1000);
             enEjecucion = true;
+            Scanner cin =new Scanner(System.in);
+            while (enEjecucion){
+                System.out.println(" ");
+                System.out.println("\nDesea pausar el cronometro? si/no");
+                System.out.println(">");
+                String respuesta = cin.nextLine();
+                if(respuesta.equalsIgnoreCase("si")){
+                    pausar();
+                }
+            }
         }
     }
 
-    public void pausar() {
+    public long pausar() {
         String rpt;
         Scanner cin = new Scanner(System.in);
 
@@ -39,23 +47,22 @@ public class Cronometro {
             tarea.cancel();
             enEjecucion = false;
         }
-        long tiempoAnterior= tiempoTranscurrido;
+        long tiempoAnterior = tiempoTranscurrido;
 
         System.out.println("Desea continuar? si/no");
-        rpt= cin.next();
-        if(rpt.equalsIgnoreCase("si")){
-            tiempoTranscurrido= tiempoAnterior;
+        rpt = cin.next();
+        if (rpt.equalsIgnoreCase("si")) {
+            tiempoTranscurrido = tiempoAnterior;
             iniciar();
+        } else if (rpt.equalsIgnoreCase("no")) {
+            return tiempoTranscurrido;
         }
-        else{
-            tiemposGuardados.add(tiempoTranscurrido);
-        }
+        long tiempoFinal= tiempoTranscurrido;
+        return tiempoFinal;
     }
 
 
-    public ArrayList<Long> getTiemposGuardados() {
-        return tiemposGuardados;
-    }
+
 
     private static String formatoTiempo(long tiempo) {
         long milisegundos = tiempo % 1000;
@@ -69,3 +76,4 @@ public class Cronometro {
         System.out.println(formatoTiempo(tiempoTranscurrido));
     }
 }
+

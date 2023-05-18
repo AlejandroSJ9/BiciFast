@@ -153,15 +153,23 @@ public class Main {
         }while (eleccion!=0);
     }
     public static void menuUsuariosRutas(){
+        Cronometro cronometro = new Cronometro();
         int eleccion = 0;
         do {
             System.out.println("\n\t\t<----Menu Rutas Usuario---->\n1. Regitrar tiempo en ruta específica\n2. Ver mis tiempos en las rutas\n\tOpcion: ");
             eleccion = cin.nextInt();
             switch (eleccion){
                 case 1:
-
+                    String rpt;
+                    System.out.println("Presione Enter para iniciar el cronometro: ");
+                    cin.nextLine();
+                    rpt= cin.nextLine();
+                    System.out.println("Tiempo: ");
+                    cronometro.iniciar();
+                    cronometro.pausar();
+                    break;
                 case 2:
-
+                    System.out.println(cronometro.getTiemposGuardados());
             }
         }while (eleccion!=0);
     }
