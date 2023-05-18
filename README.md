@@ -2,7 +2,7 @@
 
 ## Materias Involucradas
 
- - [Cálculo Integral]
+ - [Cálculo Modelo.IntegralModel]
  - [Mecánica y Laboratorio]
  - [Programación Orientada a Objetos]
  - [Estructuras de datos <3]
