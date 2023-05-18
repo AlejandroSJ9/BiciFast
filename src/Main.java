@@ -1,5 +1,6 @@
 import Controlador.DataBase;
 import Modelo.BicicletaModel;
+import Modelo.CronometroModel;
 import Modelo.PersonaModel;
 import Modelo.RutasModel;
 
@@ -152,15 +153,22 @@ public class Main {
         }while (eleccion!=0);
     }
     public static void menuUsuariosRutas(){
+        CronometroModel cronometro = new CronometroModel();
         int eleccion = 0;
         do {
             System.out.println("\n\t\t<----Menu Rutas Usuario---->\n1. Regitrar tiempo en ruta específica\n2. Ver mis tiempos en las rutas\n\tOpcion: ");
             eleccion = cin.nextInt();
             switch (eleccion){
                 case 1:
-
+                    String rpt;
+                    System.out.println("Presione Enter para iniciar el cronometro: ");
+                    cin.nextLine();
+                    rpt= cin.nextLine();
+                    System.out.println("Tiempo: ");
+                    cronometro.iniciar();
+                    cronometro.pausar();
+                    break;
                 case 2:
-
             }
         }while (eleccion!=0);
     }

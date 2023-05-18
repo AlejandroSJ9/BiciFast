@@ -7,5 +7,27 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/Downloads/commons-math4-4.0-beta1-bin/commons-math-4.0-beta1/commons-math4-core-4.0-beta1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="file://$USER_HOME$/Downloads/commons-math4-4.0-beta1-bin/commons-math-4.0-beta1" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$USER_HOME$/Downloads/commons-math4-4.0-beta1-bin/commons-math-4.0-beta1" />
+        </SOURCES>
+        <jarDirectory url="file://$USER_HOME$/Downloads/commons-math4-4.0-beta1-bin/commons-math-4.0-beta1" recursive="false" />
+        <jarDirectory url="file://$USER_HOME$/Downloads/commons-math4-4.0-beta1-bin/commons-math-4.0-beta1" recursive="false" type="SOURCES" />
+      </library>
+    </orderEntry>
   </component>
 </module>
