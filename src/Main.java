@@ -1,8 +1,10 @@
 import Controlador.DataBase;
+import Controlador.ViewMainController;
 import Modelo.BicicletaModel;
 import Modelo.CronometroModel;
 import Modelo.PersonaModel;
 import Modelo.RutasModel;
+import Vista.ViewMain;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -24,36 +26,11 @@ public class Main {
         rutas.set(1, ruta2);
         rutas.set(2, ruta3);
         rutas.set(3, ruta4);
-        menuInicio();
+        //menuInicio();
+        ViewMainController controller = new ViewMainController();
+        ViewMain main = new ViewMain(controller);
     }
-    //menu que se pone apenas se ejecuta el programa
-    public static void menuInicio(){
-        Scanner scanner = new Scanner(System.in);
-        int eleccion;
-        do{
-            System.out.print("\n\t\t<----MENU INGRESO---->\n1. Ingreso ADMIN\n2. Ingreso usuarios\n\tOpcion: ");
-            eleccion = cin.nextInt();
-            cin.nextLine();
-            switch (eleccion){
-                case 1:
-                    menuPrincipalAdministrador();
-                    break;
-                case 2:
-                    System.out.println("Ingresa solo tu nombre: ");
-                    String nombre = cin.nextLine();
-                    System.out.println("Ingresa tu contraseña: ");
-                    String pass = cin.nextLine();
-                    //verifica si la persona que trajo existe en la base de datos
-                    if(dataBase.validarLogIn(nombre,pass) == null){
-                        System.out.println("Datos incorrectos");
-                        break;
-                    }else{
-                        PersonaModel p = dataBase.validarLogIn(nombre,pass);
-                        menuUsuarios(p);
-                    }
-            }
-        }while(eleccion!=0);
-    }
+
     public static void menuPrincipalAdministrador(){
         int eleccion = -1;
         do {
