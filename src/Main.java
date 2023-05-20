@@ -27,7 +27,7 @@ public class Main {
         rutas.set(2, ruta3);
         rutas.set(3, ruta4);
         //menuInicio();
-        ViewMainController controller = new ViewMainController();
+        ViewMainController controller = new ViewMainController(dataBase);
         ViewMain main = new ViewMain(controller);
     }
 

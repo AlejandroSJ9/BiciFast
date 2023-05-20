@@ -1,6 +1,6 @@
 package Vista;
 
-import Controlador.AdministradorController;
+import Controlador.ViewAdminController;
 import Controlador.ViewMainController;
 
 import javax.swing.*;
@@ -43,8 +43,11 @@ public class ViewMain{
             @Override
             public void actionPerformed(ActionEvent e) {
                 ventana.setVisible(false);
-                AdministradorController a = new AdministradorController();
-                ViewMenuAdministrador va = new ViewMenuAdministrador(a);
+                String username = nameField.getText();
+                char[] password = passwordField.getPassword();
+                String passwordStr = new String(password);
+                controller.respuestaLoginToAdmin(username,passwordStr);
+                controller.validarLogIn(username,passwordStr);
             }
         });
 
@@ -52,5 +55,21 @@ public class ViewMain{
         ventana.add(panel,BorderLayout.CENTER);
         ventana.setVisible(true);
 
+    }
+
+    public JTextField getNameField() {
+        return nameField;
+    }
+
+    public void setNameField(JTextField nameField) {
+        this.nameField = nameField;
+    }
+
+    public JPasswordField getPasswordField() {
+        return passwordField;
+    }
+
+    public void setPasswordField(JPasswordField passwordField) {
+        this.passwordField = passwordField;
     }
 }

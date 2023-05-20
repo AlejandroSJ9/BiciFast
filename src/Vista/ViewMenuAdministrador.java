@@ -1,6 +1,6 @@
 package Vista;
 
-import Controlador.AdministradorController;
+import Controlador.ViewAdminController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,9 +9,9 @@ import java.awt.event.ActionListener;
 
 public class ViewMenuAdministrador {
     private JFrame frame;
-    private AdministradorController adminController;
+    private ViewAdminController adminController;
 
-    public ViewMenuAdministrador(AdministradorController controller){
+    public ViewMenuAdministrador(ViewAdminController controller){
         this.adminController = controller;
         showView();
     }

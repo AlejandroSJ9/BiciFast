@@ -84,15 +84,7 @@ public class DataBase {
         }
     }
     // funcion que verifica si segun el nombre y la contraseña el usuario existe en la base de datos
-    public PersonaModel validarLogIn(String user, String password){
-        for(Map.Entry<PersonaModel,ArrayList<BicicletaModel>> entry: this.dataBase.entrySet()){
-            PersonaModel personaModel = entry.getKey();
-            if(personaModel.getNombre().equals(user) && personaModel.getPass().equals(password)){
-                return personaModel;
-            }
-        }
-        return null;
-    }
+
 
     public BicicletaModel buscarBicicletaUsuario(PersonaModel personaModel, int posicion){
         ArrayList<BicicletaModel> bicicletaModels = this.dataBase.get(personaModel);
@@ -104,5 +96,11 @@ public class DataBase {
         }
     }
 
+    public HashMap<PersonaModel, ArrayList<BicicletaModel>> getDataBase() {
+        return dataBase;
+    }
 
+    public void setDataBase(HashMap<PersonaModel, ArrayList<BicicletaModel>> dataBase) {
+        this.dataBase = dataBase;
+    }
 }
