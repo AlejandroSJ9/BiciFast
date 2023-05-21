@@ -31,49 +31,6 @@ public class Main {
         ViewMain main = new ViewMain(controller);
     }
 
-    public static void menuPrincipalAdministrador(){
-        int eleccion = -1;
-        do {
-            System.out.println("\n\t\t<------MENU PRINCIPAL----->");
-            //Metodos crud
-            System.out.println("1. Imprimir Base Datos\n2. Agregar Usuario\n3. Borrar Usuario\n4. Editar Usuario\n5. Ver rutas");
-            System.out.print("\tOpcion: ");
-            eleccion = cin.nextInt();
-            switch (eleccion){
-                case 1:
-                    dataBase.imprimirHashMap();
-                    break;
-                case 2:
-                    PersonaModel personaModel = registrarPersonaMenu();
-                    BicicletaModel bicicletaModel = registarBicicletaMenu(personaModel);
-                    dataBase.agregarBicicletaEnPersona(personaModel, bicicletaModel);
-                    break;
-            }
-        }while (eleccion!=0);
-    }
-    public static PersonaModel registrarPersonaMenu(){
-        PersonaModel p;
-        try {
-            cin.nextLine();
-            System.out.println("Digite su nombre: ");
-            String nombre = cin.nextLine();
-            System.out.println("Digite sus apellidos: ");
-            String apellido = cin.nextLine();
-            System.out.println("Digite su numero de documento: ");
-            int documento = cin.nextInt();
-            cin.nextLine();
-            System.out.println("Digite su numero de celular: ");
-            String numero = cin.nextLine();
-            System.out.println("Ingrese su contraseña: ");
-            String pass = cin.nextLine();
-            p = new PersonaModel(nombre,apellido,documento,numero,pass);
-        }catch (Exception e){
-            System.out.println("Error, intente nuevamente");
-            return registrarPersonaMenu();
-        }
-        return p;
-    }
-
     public static BicicletaModel registarBicicletaMenu(PersonaModel personaModel){
         BicicletaModel b1;
         try{
@@ -108,7 +65,7 @@ public class Main {
                     menuUsuariosRutas();
                     break;
                 case 3:
-                    dataBase.agregarBicicletaEnPersona(personaModel,registarBicicletaMenu(personaModel));
+                    dataBase.agregarPersonaBicicleta(personaModel,registarBicicletaMenu(personaModel));
                     break;
                 case 4:
                     dataBase.imprimirBicicletas(personaModel);

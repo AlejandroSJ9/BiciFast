@@ -16,23 +16,13 @@ public class DataBase {
     }
 
     //ESte metodo agrega una persona y bicicleta a la base de datos que es un hashmap
-    public void agregarBicicletaEnPersona(PersonaModel p, BicicletaModel bicicletaModel){
+    public void agregarPersonaBicicleta(PersonaModel p, BicicletaModel bicicletaModel){
         if(!this.dataBase.containsKey(p)){
             this.dataBase.put(p,new ArrayList<BicicletaModel>());
         }
         this.dataBase.get(p).add(bicicletaModel);
     }
-    //Funcion que imprime el hash map completo
-    public void imprimirHashMap(){
-        for(Map.Entry<PersonaModel,ArrayList<BicicletaModel>> entry : this.dataBase.entrySet()){
-            PersonaModel personaModel = entry.getKey();
-            ArrayList<BicicletaModel> bicicletaModels = entry.getValue();
-            System.out.println("- " + personaModel.getNombre()+" " + personaModel.getApellido() + " " + personaModel.getPhoneNumber()) ;
-            for(BicicletaModel b : bicicletaModels){
-                System.out.println("\t* " + b.getMarca() + " - " + b.getUnique_id() + " ");
-            }
-        }
-    }
+
     public void imprimirBicicletas(PersonaModel personaModelLOGIN){
         for(Map.Entry<PersonaModel,ArrayList<BicicletaModel>> entry : this.dataBase.entrySet()){
             PersonaModel personaModelDB = entry.getKey();

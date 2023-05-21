@@ -1,6 +1,8 @@
 package Vista;
 
+import Controlador.DataBase;
 import Controlador.ViewAdminController;
+import Controlador.ViewFormPersonaModelController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,9 +12,12 @@ import java.awt.event.ActionListener;
 public class ViewMenuAdministrador {
     private JFrame frame;
     private ViewAdminController adminController;
+    private JTextArea textArea;
+    private DataBase dataBase;
 
-    public ViewMenuAdministrador(ViewAdminController controller){
+    public ViewMenuAdministrador(ViewAdminController controller, DataBase dataBase){
         this.adminController = controller;
+        this.dataBase = dataBase;
         showView();
     }
     public void showView() {
@@ -27,18 +32,24 @@ public class ViewMenuAdministrador {
         JLabel titleLabel = new JLabel("<html><h2>MENU PRINCIPAL</h2></html>");
         panel.add(titleLabel);
 
+        textArea = new JTextArea(10,30);
+        textArea.setEditable(false);
         JButton imprimirButton = new JButton("Imprimir Base Datos");
         imprimirButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // Lógica para imprimir la base de datos
+                adminController.mostrarDataBase(textArea);
             }
         });
+
         panel.add(imprimirButton);
 
         JButton agregarButton = new JButton("Agregar Usuario");
         agregarButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // Lógica para agregar un usuario
+                ViewFormPersonaModel viewFormPersonaModel = new ViewFormPersonaModel();
+                ViewFormPersonaModelController viewFormPersonaModelController = new ViewFormPersonaModelController(dataBase,viewFormPersonaModel);
+                viewFormPersonaModel.setPersonaModelController(viewFormPersonaModelController);
+                viewFormPersonaModelController.iniciarVista();
             }
         });
         panel.add(agregarButton);
@@ -66,7 +77,7 @@ public class ViewMenuAdministrador {
             }
         });
         panel.add(verButton);
-
+        panel.add(textArea);
         frame.add(panel, BorderLayout.CENTER);
         frame.setVisible(true);
     }

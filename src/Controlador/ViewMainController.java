@@ -26,7 +26,7 @@ public class ViewMainController {
 
     public void respuestaLoginToAdmin(String user, String pass){
         if(user.equals("admin") && pass.equals("1234")){
-            ViewAdminController viewAdminController = new ViewAdminController();
+            ViewAdminController viewAdminController = new ViewAdminController(this.dataBase);
         }
     }
 
