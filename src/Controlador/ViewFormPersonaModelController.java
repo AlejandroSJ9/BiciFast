@@ -46,7 +46,7 @@ public class ViewFormPersonaModelController {
             for (Map.Entry<PersonaModel, ArrayList<BicicletaModel>> entry : this.dataBase.getDataBase().entrySet()) {
                 PersonaModel personaModelDB = entry.getKey();
                 if (personaModel.getId() == personaModelDB.getId()) {
-                    JOptionPane.showMessageDialog(viewFormPersonaModel.getFrame(), "Error al registrar el usuario. Verifique los datos ingresados.", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(viewFormPersonaModel.getFrame(), "Error: Base de Datos Vacía", "Error", JOptionPane.ERROR_MESSAGE);
                     huboRegistro = false;
                 } else {
                     registrarPersona(personaModel);

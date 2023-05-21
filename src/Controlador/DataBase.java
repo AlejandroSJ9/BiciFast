@@ -12,7 +12,7 @@ public class DataBase {
 
     //metodo constructor
     public DataBase() {
-        this.dataBase = new HashMap<PersonaModel, ArrayList<BicicletaModel>>();
+        this.dataBase = new HashMap<>();
     }
 
     //ESte metodo agrega una persona y bicicleta a la base de datos que es un hashmap
@@ -48,6 +48,9 @@ public class DataBase {
                 System.out.println("Bicicleta no existe");
             }
         }
+    }
+    public void eliminarPersona(PersonaModel personaModel){
+        this.dataBase.remove(personaModel);
     }
     //funcion verifica si el propietario existe y verifica si la bicicleta que va a editar esta en la lista de sus bicicletas y guarda los nuevos datos
     public void actualizarBicicleta(PersonaModel propitario, BicicletaModel nueva, BicicletaModel antigua){

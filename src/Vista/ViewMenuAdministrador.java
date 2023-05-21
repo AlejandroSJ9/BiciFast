@@ -57,7 +57,17 @@ public class ViewMenuAdministrador {
         JButton borrarButton = new JButton("Borrar Usuario");
         borrarButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // Lógica para borrar un usuario
+                adminController.mostrarDataBase(textArea);
+                JFrame frame = new JFrame("Eliminar user");
+                frame.setSize(300, 300);
+                frame.setLayout(new GridLayout(6, 2));
+
+                JLabel nombreLabel = new JLabel("Ingresa el ID:");
+                JTextField nombreTextField = new JTextField();
+                frame.add(nombreLabel);
+                frame.add(nombreTextField);
+                frame.setVisible(true);
+                adminController.eliminarPersonaDataBase(Integer.parseInt(nombreTextField.getText()));
             }
         });
         panel.add(borrarButton);
@@ -80,5 +90,29 @@ public class ViewMenuAdministrador {
         panel.add(textArea);
         frame.add(panel, BorderLayout.CENTER);
         frame.setVisible(true);
+    }
+
+    public JFrame getFrame() {
+        return frame;
+    }
+
+    public void setFrame(JFrame frame) {
+        this.frame = frame;
+    }
+
+    public ViewAdminController getAdminController() {
+        return adminController;
+    }
+
+    public void setAdminController(ViewAdminController adminController) {
+        this.adminController = adminController;
+    }
+
+    public JTextArea getTextArea() {
+        return textArea;
+    }
+
+    public void setTextArea(JTextArea textArea) {
+        this.textArea = textArea;
     }
 }

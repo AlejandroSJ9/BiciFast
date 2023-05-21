@@ -32,4 +32,16 @@ public class ViewAdminController {
             }
         }
     }
+    public void eliminarPersonaDataBase(int idDelete){
+        if(this.dataBase.getDataBase().isEmpty()){
+            JOptionPane.showMessageDialog(menuAdministrador.getFrame(), "Error al registrar el usuario. Verifique los datos ingresados.", "Error", JOptionPane.ERROR_MESSAGE);
+        }else{
+            for(Map.Entry<PersonaModel,ArrayList<BicicletaModel>> entry: this.dataBase.getDataBase().entrySet()){
+                PersonaModel personaDB = entry.getKey();
+                if(idDelete == personaDB.getId()){
+                    this.dataBase.eliminarPersona(personaDB);
+                }
+            }
+        }
+    }
 }
