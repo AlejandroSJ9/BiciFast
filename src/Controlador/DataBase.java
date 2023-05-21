@@ -89,6 +89,15 @@ public class DataBase {
         }
     }
 
+    public PersonaModel buscarByID(int id){
+        for(Map.Entry<PersonaModel,ArrayList<BicicletaModel>> entry: dataBase.entrySet()){
+            PersonaModel p = entry.getKey();
+            if(p.getId() == id){
+                return p;
+            }
+        }
+        return null;
+    }
     public HashMap<PersonaModel, ArrayList<BicicletaModel>> getDataBase() {
         return dataBase;
     }

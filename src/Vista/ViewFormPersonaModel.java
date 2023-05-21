@@ -1,7 +1,6 @@
 package Vista;
 
-import Controlador.ViewFormPersonaModelController;
-import Modelo.PersonaModel;
+import Controlador.ViewFormPersonaController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,9 +14,9 @@ public class ViewFormPersonaModel {
     private JTextField documentoTextField;
     private JTextField numeroTextField;
     private JTextField passTextField;
-    private ViewFormPersonaModelController personaModelController;
+    private ViewFormPersonaController personaModelController;
 
-    public ViewFormPersonaModel(ViewFormPersonaModelController c){
+    public ViewFormPersonaModel(ViewFormPersonaController c){
         this.personaModelController = c;
     }
     public ViewFormPersonaModel(){
@@ -76,11 +75,11 @@ public class ViewFormPersonaModel {
         frame.setVisible(true);
     }
 
-    public ViewFormPersonaModelController getPersonaModelController() {
+    public ViewFormPersonaController getPersonaModelController() {
         return personaModelController;
     }
 
-    public void setPersonaModelController(ViewFormPersonaModelController personaModelController) {
+    public void setPersonaModelController(ViewFormPersonaController personaModelController) {
         this.personaModelController = personaModelController;
     }
 

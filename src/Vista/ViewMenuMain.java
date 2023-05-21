@@ -8,14 +8,14 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ViewMain{
+public class ViewMenuMain {
     private JFrame ventana;
     private ViewMainController controller;
     private JPanel panel;
     private JTextField nameField;
     private JPasswordField passwordField;
 
-    public ViewMain(ViewMainController c){
+    public ViewMenuMain(ViewMainController c){
         this.controller = c;
         startView();
     }

@@ -4,7 +4,7 @@ import Modelo.BicicletaModel;
 import Modelo.CronometroModel;
 import Modelo.PersonaModel;
 import Modelo.RutasModel;
-import Vista.ViewMain;
+import Vista.ViewMenuMain;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -28,7 +28,7 @@ public class Main {
         rutas.set(3, ruta4);
         //menuInicio();
         ViewMainController controller = new ViewMainController(dataBase);
-        ViewMain main = new ViewMain(controller);
+        ViewMenuMain main = new ViewMenuMain(controller);
     }
 
     public static BicicletaModel registarBicicletaMenu(PersonaModel personaModel){

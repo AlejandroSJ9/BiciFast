@@ -2,7 +2,8 @@ package Vista;
 
 import Controlador.DataBase;
 import Controlador.ViewAdminController;
-import Controlador.ViewFormPersonaModelController;
+import Controlador.ViewFormDeleteByIDController;
+import Controlador.ViewFormPersonaController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -47,9 +48,9 @@ public class ViewMenuAdministrador {
         agregarButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 ViewFormPersonaModel viewFormPersonaModel = new ViewFormPersonaModel();
-                ViewFormPersonaModelController viewFormPersonaModelController = new ViewFormPersonaModelController(dataBase,viewFormPersonaModel);
-                viewFormPersonaModel.setPersonaModelController(viewFormPersonaModelController);
-                viewFormPersonaModelController.iniciarVista();
+                ViewFormPersonaController viewFormPersonaController = new ViewFormPersonaController(dataBase,viewFormPersonaModel);
+                viewFormPersonaModel.setPersonaModelController(viewFormPersonaController);
+                viewFormPersonaController.iniciarVista();
             }
         });
         panel.add(agregarButton);
@@ -58,16 +59,8 @@ public class ViewMenuAdministrador {
         borrarButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 adminController.mostrarDataBase(textArea);
-                JFrame frame = new JFrame("Eliminar user");
-                frame.setSize(300, 300);
-                frame.setLayout(new GridLayout(6, 2));
-
-                JLabel nombreLabel = new JLabel("Ingresa el ID:");
-                JTextField nombreTextField = new JTextField();
-                frame.add(nombreLabel);
-                frame.add(nombreTextField);
-                frame.setVisible(true);
-                adminController.eliminarPersonaDataBase(Integer.parseInt(nombreTextField.getText()));
+                ViewFormDeleteByIDController deleteController = new ViewFormDeleteByIDController(dataBase,frame);
+                deleteController.iniciarVista();
             }
         });
         panel.add(borrarButton);
