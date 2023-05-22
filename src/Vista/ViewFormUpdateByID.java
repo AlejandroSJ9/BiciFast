@@ -17,63 +17,112 @@ public class ViewFormUpdateByID {
     private JTextField documentoTextField;
     private JTextField numeroTextField;
     private JTextField passTextField;
+    private JButton buttonUpdate;
 
     public ViewFormUpdateByID(ViewFormUpdateByIDController c){
         this.controller = c;
     }
-    public void iniciarVista(){
+    public ViewFormUpdateByID(){
+
+    }
+    public void iniciarVista() {
         frame = new JFrame("Actualizar Usuario");
-        frame.setSize(300,200);
-        frame.setLayout(new GridLayout(6,2));
+        frame.setSize(400, 300);
+        frame.setLayout(new GridBagLayout());
+
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.anchor = GridBagConstraints.WEST;
+        gbc.insets = new Insets(5, 5, 5, 5);
 
         JLabel textActualizar = new JLabel("Ingresa el ID: ");
-        buscarById = new JTextField();
+        buscarById = new JTextField(10);
 
         buttonSearch = new JButton("Buscar");
         buttonSearch.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //logica de buscar y agregar los datos del
+                controller.setTextOfPersona(Integer.parseInt(buscarById.getText()));
             }
         });
 
         JLabel nombreLabel = new JLabel("Nombre:");
-        nombreTextField = new JTextField();
+        nombreTextField = new JTextField(20);
 
         JLabel apellidoLabel = new JLabel("Apellidos:");
-        apellidoTextField = new JTextField();
+        apellidoTextField = new JTextField(20);
 
         JLabel documentoLabel = new JLabel("Número de documento:");
-        documentoTextField = new JTextField();
+        documentoTextField = new JTextField(20);
 
         JLabel numeroLabel = new JLabel("Número de celular:");
-        numeroTextField = new JTextField();
+        numeroTextField = new JTextField(20);
 
         JLabel passLabel = new JLabel("Contraseña:");
-        passTextField = new JTextField();
+        passTextField = new JTextField(20);
 
-        frame.add(textActualizar);
-        frame.add(buscarById);
-        frame.add(buttonSearch);
+        buttonUpdate = new JButton("Actualizar");
+        buttonUpdate.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controller.actualizarPersona();
+            }
+        });
 
-        frame.add(nombreLabel);
-        frame.add(nombreTextField);
+        // Primera columna
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        frame.add(textActualizar, gbc);
 
-        frame.add(apellidoLabel);
-        frame.add(apellidoTextField);
+        gbc.gridy = 1;
+        frame.add(nombreLabel, gbc);
 
-        frame.add(documentoLabel);
-        frame.add(documentoTextField);
+        gbc.gridy = 2;
+        frame.add(apellidoLabel, gbc);
 
-        frame.add(numeroLabel);
-        frame.add(numeroTextField);
+        gbc.gridy = 3;
+        frame.add(documentoLabel, gbc);
 
-        frame.add(passLabel);
-        frame.add(passTextField);
+        gbc.gridy = 4;
+        frame.add(numeroLabel, gbc);
+
+        gbc.gridy = 5;
+        frame.add(passLabel, gbc);
+
+        // Segunda columna
+        gbc.gridx = 1;
+        gbc.gridy = 0;
+        frame.add(buscarById, gbc);
+
+        gbc.gridy = 1;
+        frame.add(nombreTextField, gbc);
+
+        gbc.gridy = 2;
+        frame.add(apellidoTextField, gbc);
+
+        gbc.gridy = 3;
+        frame.add(documentoTextField, gbc);
+
+        gbc.gridy = 4;
+        frame.add(numeroTextField, gbc);
+
+        gbc.gridy = 5;
+        frame.add(passTextField, gbc);
+
+        // Botón de búsqueda
+        gbc.gridx = 2;
+        gbc.gridy = 0;
+        frame.add(buttonSearch, gbc);
+
+        // Botón de actualización
+        gbc.gridx = 0;
+        gbc.gridy = 6;
+        gbc.gridwidth = 3;
+        gbc.anchor = GridBagConstraints.CENTER;
+        frame.add(buttonUpdate, gbc);
 
         frame.setVisible(true);
-
     }
+
 
     public JFrame getFrame() {
         return frame;
@@ -137,5 +186,13 @@ public class ViewFormUpdateByID {
 
     public void setPassTextField(JTextField passTextField) {
         this.passTextField = passTextField;
+    }
+
+    public ViewFormUpdateByIDController getController() {
+        return controller;
+    }
+
+    public void setController(ViewFormUpdateByIDController controller) {
+        this.controller = controller;
     }
 }

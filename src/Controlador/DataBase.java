@@ -68,12 +68,12 @@ public class DataBase {
         }
     }
 
-    public void actualizarPersona(PersonaModel propietarioAntiguo, PersonaModel propietarioNuevo){
+    public void actualizarPersona(PersonaModel propietarioAntiguo, String nombre,String apellido, int id, String phoneNumber){
         if(this.dataBase.containsKey(propietarioAntiguo)){
-            propietarioAntiguo.setApellido(propietarioNuevo.getApellido());
-            propietarioAntiguo.setNombre(propietarioNuevo.getNombre());
-            propietarioAntiguo.setPhoneNumber(propietarioNuevo.getPhoneNumber());
-            propietarioAntiguo.setId(propietarioNuevo.getId());
+            propietarioAntiguo.setApellido(apellido);
+            propietarioAntiguo.setNombre(nombre);
+            propietarioAntiguo.setPhoneNumber(phoneNumber);
+            propietarioAntiguo.setId(id);
         }
     }
     // funcion que verifica si segun el nombre y la contraseña el usuario existe en la base de datos

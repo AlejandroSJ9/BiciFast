@@ -1,9 +1,6 @@
 package Vista;
 
-import Controlador.DataBase;
-import Controlador.ViewAdminController;
-import Controlador.ViewFormDeleteByIDController;
-import Controlador.ViewFormPersonaController;
+import Controlador.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -61,6 +58,7 @@ public class ViewMenuAdministrador {
                 adminController.mostrarDataBase(textArea);
                 ViewFormDeleteByIDController deleteController = new ViewFormDeleteByIDController(dataBase,frame);
                 deleteController.iniciarVista();
+                adminController.mostrarDataBase(textArea);
             }
         });
         panel.add(borrarButton);
@@ -68,7 +66,12 @@ public class ViewMenuAdministrador {
         JButton editarButton = new JButton("Editar Usuario");
         editarButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // Lógica para editar un usuario
+
+                ViewFormUpdateByID formUpdateByID = new ViewFormUpdateByID();
+                ViewFormUpdateByIDController updateByIDController = new ViewFormUpdateByIDController(formUpdateByID,dataBase);
+                formUpdateByID.setController(updateByIDController);
+                updateByIDController.iniciarVista();
+                adminController.mostrarDataBase(textArea);
             }
         });
         panel.add(editarButton);
