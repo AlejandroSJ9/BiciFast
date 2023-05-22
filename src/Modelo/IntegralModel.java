@@ -1,7 +1,11 @@
 package Modelo;
 
 public abstract class IntegralModel {
-    public  double integral(double a, double b, int n) {
+    //a= limite inferior de integracion
+    //b= limite superior de integracion
+    //n= numero de intervalos
+
+    public  double integral(double a, double b, int n) {//metodo de simspon
         if(n%2==1) n++;
         double h = (b-a)/n;
         double suma= f(a)+f(b);
