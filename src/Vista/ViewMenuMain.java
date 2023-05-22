@@ -48,7 +48,6 @@ public class ViewMenuMain {
                 String passwordStr = new String(password);
                 controller.respuestaLoginToAdmin(username,passwordStr);
                 controller.validarLogIn(username,passwordStr);
-
             }
         });
 

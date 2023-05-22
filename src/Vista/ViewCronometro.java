@@ -10,7 +10,7 @@ public class ViewCronometro {
     private JFrame frame;
     private JButton startButton;
     private JButton pauseButton;
-    private CronometroModel cronometro;
+    private CronometroModel cronometro = new CronometroModel();
 
     public ViewCronometro(){
         frame= new JFrame("Cronometro");
@@ -42,12 +42,10 @@ public class ViewCronometro {
     }
 
     private void iniciarCronometro(){
-        cronometro= new CronometroModel();
         cronometro.iniciar();
     }
 
     private void pausarCronometro(){
-        cronometro= new CronometroModel();
         cronometro.pausar();
     }
 }

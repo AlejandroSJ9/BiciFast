@@ -2,6 +2,7 @@ package Controlador;
 
 import Modelo.BicicletaModel;
 import Modelo.PersonaModel;
+import Vista.ViewMenuPersona;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -31,6 +32,9 @@ public class ViewMainController {
     }
 
     private void respuestaLoginToUser(PersonaModel personaLogin){
-        ViewMenuPersonaController viewMenuPersonaController = new ViewMenuPersonaController(personaLogin,this.dataBase);
+        ViewMenuPersona vewPersona = new ViewMenuPersona();
+        ViewMenuPersonaController viewMenuPersonaController = new ViewMenuPersonaController(personaLogin,this.dataBase,vewPersona);
+        vewPersona.setController(viewMenuPersonaController);
+        viewMenuPersonaController.iniciarVista();
     }
 }
