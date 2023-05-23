@@ -15,7 +15,13 @@ public class ViewFormBicicleta {
     private JTextField coloTF;
     private ViewFormBicicletaController controller;
 
+    public ViewFormBicicleta (ViewFormBicicletaController controller) {
+        this.controller = controller;
+    }
 
+    public ViewFormBicicleta(){
+
+    }
 
     public void iniciarVista(){
         frame = new JFrame("Registrar Bicicleta");
