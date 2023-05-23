@@ -7,6 +7,7 @@ import java.util.ArrayList;
 // Verificar que no se sobreescriba los datos en las mismas rutas.
 public class CronometroModel {
     private long tiempoTranscurrido = 0;
+    private long tiempoAnterior=0;
     private Timer timer;
     private TimerTask tarea;
     private boolean enEjecucion;
@@ -28,41 +29,33 @@ public class CronometroModel {
             };
             timer.schedule(tarea, 0, 1000);
             enEjecucion = true;
-            Scanner cin =new Scanner(System.in);
-            while (enEjecucion){
-                System.out.println(" ");
-                System.out.println("\nDesea pausar el cronometro? si/no");
-                System.out.println(">");
-                String respuesta = cin.nextLine();
-                if(respuesta.equalsIgnoreCase("si")){
-                    pausar();
-                }
-            }
         }
     }
 
-    public long pausar() {
-        String rpt;
-        Scanner cin = new Scanner(System.in);
-
+    public void pausar() {
         if (enEjecucion) {
             tarea.cancel();
             enEjecucion = false;
+            tiempoAnterior= tiempoTranscurrido;
         }
-        long tiempoAnterior = tiempoTranscurrido;
-
-        System.out.println("Desea continuar? si/no");
-        rpt = cin.next();
-        if (rpt.equalsIgnoreCase("si")) {
-            tiempoTranscurrido = tiempoAnterior;
-            iniciar();
-        } else if (rpt.equalsIgnoreCase("no")) {
-            return tiempoTranscurrido;
-        }
-        long tiempoFinal= tiempoTranscurrido;
-        return tiempoFinal;
     }
 
+    public void reanudar(){
+        if(!enEjecucion){
+            tiempoTranscurrido= tiempoAnterior;
+            iniciar();
+        }
+    }
+
+    public long finalizar(){
+        pausar();
+        return tiempoTranscurrido;
+    }
+
+    /*public long getTiempoTomado(){
+        return tiempoTranscurrido;
+    }
+    */
 
 
 

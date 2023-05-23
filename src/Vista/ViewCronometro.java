@@ -1,5 +1,6 @@
 package Vista;
 
+import Controlador.ViewCronometroController;
 import Modelo.CronometroModel;
 
 import javax.swing.*;
@@ -10,44 +11,59 @@ public class ViewCronometro {
     private JFrame frame;
     private JButton startButton;
     private JButton pauseButton;
+    private JButton finalizeButton;
     private CronometroModel cronometro;
+    private ViewCronometroController cronometroController;
+    private boolean enPausa;
 
-    public ViewCronometro(){
-        frame= new JFrame("Cronometro");
+    public ViewCronometro() {
+        frame = new JFrame("Cronometro");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JPanel panel=new JPanel();
+        JPanel panel = new JPanel();
 
-        startButton= new JButton("iniciar");
+        startButton = new JButton("iniciar");
         startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                iniciarCronometro();
+                cronometroController.iniciarCronometro();
             }
         });
         panel.add(startButton);
 
-        pauseButton= new JButton("Pausar");
+        pauseButton = new JButton("Pausar");
         pauseButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                pausarCronometro();
+                if (enPausa) {
+                    cronometroController.reanudarCronometro();
+                } else {
+                    cronometroController.pausarCronometro();
+                }
             }
         });
-
         panel.add(pauseButton);
+
+        finalizeButton = new JButton("Finalizar");
+        finalizeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cronometroController.finalizarCronometro();
+            }
+        });
+        panel.add(finalizeButton);
+
         frame.add(panel);
         frame.pack();
         frame.setVisible(true);
     }
 
-    private void iniciarCronometro(){
-        cronometro= new CronometroModel();
-        cronometro.iniciar();
-    }
-
-    private void pausarCronometro(){
-        cronometro= new CronometroModel();
-        cronometro.pausar();
+    public void setEnPausa(boolean enPausa) {
+        this.enPausa = enPausa;
+        if (enPausa) {
+            pauseButton.setText("Reanudar");
+        } else {
+            pauseButton.setText("Pausar");
+        }
     }
 }
