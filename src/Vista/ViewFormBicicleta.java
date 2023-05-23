@@ -1,5 +1,6 @@
 package Vista;
 
+import Controlador.ViewFormBicicletaController;
 import Controlador.ViewFormPersonaController;
 
 import javax.swing.*;
@@ -12,9 +13,15 @@ public class ViewFormBicicleta {
     private JTextField marcaTF;
     private JTextField idTF;
     private JTextField coloTF;
-    private ViewFormPersonaController personaModelController;
+    private ViewFormBicicletaController controller;
 
+    public ViewFormBicicleta (ViewFormBicicletaController controller) {
+        this.controller = controller;
+    }
 
+    public ViewFormBicicleta(){
+
+    }
 
     public void iniciarVista(){
         frame = new JFrame("Registrar Bicicleta");
@@ -44,11 +51,7 @@ public class ViewFormBicicleta {
         registrarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (personaModelController.validarDatosPersona()) {
-                    JOptionPane.showMessageDialog(frame,"Registro Exitoso");
-                    frame.setVisible(false);
-                }
-
+                controller.agregarBicicleta();
             }
         });
         frame.add(registrarButton);
@@ -70,5 +73,13 @@ public class ViewFormBicicleta {
 
     public JTextField getColoTF() {
         return coloTF;
+    }
+
+    public ViewFormBicicletaController getController() {
+        return controller;
+    }
+
+    public void setController(ViewFormBicicletaController controller) {
+        this.controller = controller;
     }
 }

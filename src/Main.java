@@ -30,62 +30,6 @@ public class Main {
         ViewMainController controller = new ViewMainController(dataBase);
         ViewMenuMain main = new ViewMenuMain(controller);
     }
-
-    public static BicicletaModel registarBicicletaMenu(PersonaModel personaModel){
-        BicicletaModel b1;
-        try{
-            cin.nextLine();
-            System.out.println("Ingrese la marca de su bicicleta: ");
-            String marca1= cin.nextLine();
-            System.out.println("Ingrese el id de su bicicleta: ");
-            int id1 = cin.nextInt();
-            cin.nextLine();
-            System.out.println("Ingrese el color de su bicicleta: ");
-            String color1 = cin.nextLine();
-            b1 = new BicicletaModel(marca1,id1,color1, personaModel,false);
-        }catch (Exception e){
-            System.out.println("Error al ingresar los datos!");
-            return registarBicicletaMenu(personaModel);
-        }
-        return b1;
-    }
-    public static void menuUsuarios(PersonaModel personaModel){
-        int eleccion = 0;
-        do {
-            System.out.println("\n\t\t<------MENU USUARIO----->\n\t\tUsuario: "+ personaModel.getNombre());
-            System.out.println("1. Ver bicicletas\n2. Rutas\n3. Registrar bici\n4. Eliminar bici\n5. Actualizar bici");
-            System.out.print("\tOpcion: ");
-            eleccion = cin.nextInt();
-
-            switch (eleccion){
-                case 1:
-                    dataBase.imprimirBicicletas(personaModel);
-                    break;
-                case 2:
-                    menuUsuariosRutas();
-                    break;
-                case 3:
-                    dataBase.agregarPersonaBicicleta(personaModel,registarBicicletaMenu(personaModel));
-                    break;
-                case 4:
-                    dataBase.imprimirBicicletas(personaModel);
-                    System.out.print("\n\tCual bicicleta vas a eliminar?: \nOpcion");
-                    int biciElegir = cin.nextInt();
-                    dataBase.eliminarBicicleta(personaModel,dataBase.buscarBicicletaUsuario(personaModel,biciElegir-1));
-                    break;
-                case 5:
-                    dataBase.imprimirBicicletas(personaModel);
-                    cin.nextLine();
-                    System.out.print("\n\tCual bicicleta vas a editar?: \nOpcion");
-                    int biciEditar = cin.nextInt();
-                    BicicletaModel bicicletaModelEdit = dataBase.buscarBicicletaUsuario(personaModel,biciEditar-1);
-                    dataBase.actualizarBicicleta(personaModel,registarBicicletaMenu(personaModel), bicicletaModelEdit);
-                default:
-                    System.out.println("Opcion invalida, por favor digite una valida");
-
-            }
-        }while (eleccion!=0);
-    }
     public static void menuUsuariosRutas(){
         CronometroModel cronometro = new CronometroModel();
         int eleccion = 0;
@@ -105,8 +49,5 @@ public class Main {
                 case 2:
             }
         }while (eleccion!=0);
-    }
-    public static void menuRegistrarTiempoRuta(){
-
     }
 }

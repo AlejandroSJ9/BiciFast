@@ -82,9 +82,23 @@ public class ViewMenuAdministrador {
                 // Lógica para ver rutas
             }
         });
+
+        JButton back = new JButton("Volver");
+        back.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.setVisible(false);
+                ViewMainController viewMain = new ViewMainController(dataBase);
+                ViewMenuMain viewMenuMain = new ViewMenuMain(viewMain);
+
+            }
+        });
+
         panel.add(verButton);
         panel.add(textArea);
+        panel.add(back);
         frame.add(panel, BorderLayout.CENTER);
+
         frame.setVisible(true);
     }
 

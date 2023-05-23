@@ -19,6 +19,12 @@ public class BicicletaModel {
 
     }
 
+    public BicicletaModel(String marca, int unique_id, String color) {
+        this.marca = marca;
+        this.unique_id = unique_id;
+        this.color = color;
+    }
+
     @Override
     public String toString() {
         // Convertir los atributos a una cadena en el formato "marca|unique_id|color|persona|robada"

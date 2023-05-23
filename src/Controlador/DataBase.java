@@ -98,6 +98,9 @@ public class DataBase {
         }
         return null;
     }
+    public ArrayList<BicicletaModel> getBicicletasDePersona(PersonaModel persona) {
+        return dataBase.getOrDefault(persona, new ArrayList<>());
+    }
     public HashMap<PersonaModel, ArrayList<BicicletaModel>> getDataBase() {
         return dataBase;
     }

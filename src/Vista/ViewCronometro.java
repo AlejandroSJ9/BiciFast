@@ -11,10 +11,13 @@ public class ViewCronometro {
     private JFrame frame;
     private JButton startButton;
     private JButton pauseButton;
+
     private JButton finalizeButton;
-    private CronometroModel cronometro;
     private ViewCronometroController cronometroController;
     private boolean enPausa;
+
+    private CronometroModel cronometro = new CronometroModel();
+
 
     public ViewCronometro() {
         frame = new JFrame("Cronometro");
@@ -57,6 +60,7 @@ public class ViewCronometro {
         frame.pack();
         frame.setVisible(true);
     }
+
 
     public void setEnPausa(boolean enPausa) {
         this.enPausa = enPausa;
