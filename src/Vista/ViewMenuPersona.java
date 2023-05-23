@@ -3,6 +3,7 @@ package Vista;
 import Controlador.ViewFormBicicletaController;
 import Controlador.ViewMainController;
 import Controlador.ViewMenuPersonaController;
+import Controlador.ViewUpdateBikeController;
 import Modelo.BicicletaModel;
 import Modelo.PersonaModel;
 
@@ -54,6 +55,7 @@ public class ViewMenuPersona {
         tablaBicicletas = new JTable(tableModel);
         JScrollPane scrollPane = new JScrollPane(tablaBicicletas);
         panel.add(scrollPane);
+
 
         frame.add(panel, BorderLayout.CENTER);
 
@@ -111,8 +113,12 @@ public class ViewMenuPersona {
         actualizarBicicletaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Aquí puedes implementar la lógica para actualizar una bicicleta
-                // Puedes abrir un formulario de edición o realizar las acciones necesarias según tu diseño
+                ViewUpdateBike viewBike = new ViewUpdateBike();
+                ViewUpdateBikeController bikeController = new ViewUpdateBikeController(controller.getDataBase(),viewBike,bicicletaSeleccionada,controller.getPersonaModel() );
+                viewBike.setController(bikeController);
+                bikeController.iniciarVista();
+                bikeController.setTextOnTextField(bicicletaSeleccionada);
+
             }
         });
         panel.add(actualizarBicicletaButton);
