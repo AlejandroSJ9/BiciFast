@@ -5,6 +5,7 @@ import Controlador.ViewMainController;
 import Controlador.ViewMenuPersonaController;
 import Controlador.ViewUpdateBikeController;
 import Modelo.BicicletaModel;
+import Modelo.FuncionModel;
 import Modelo.PersonaModel;
 
 import javax.swing.*;
@@ -123,7 +124,18 @@ public class ViewMenuPersona {
         });
         panel.add(actualizarBicicletaButton);
 
+        JButton rutas = new JButton("Registrar ruta ");
+        rutas.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                double resultado=new FuncionModel().integral(0.0, 20 , 1000);
+                String msg = "Huella de carbono ahorrado para esta ruta: " + resultado ;
+                JOptionPane.showMessageDialog(frame, msg);
 
+            }
+        });
+        panel.add(actualizarBicicletaButton);
+        panel.add(rutas);
 
         frame.setVisible(true);
     }
